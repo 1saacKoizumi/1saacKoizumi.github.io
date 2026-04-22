@@ -93,6 +93,34 @@ function updateClock() {
   el.textContent = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 }
 
+// Slideshow
+function initSlideshows() {
+  document.querySelectorAll('.slideshow').forEach(show => {
+    const imgs = show.querySelectorAll('.slideshow-track img');
+    const counter = show.querySelector('.slideshow-counter');
+    const caption = show.querySelector('.slideshow-caption');
+    const captions = show.dataset.captions ? show.dataset.captions.split('|') : [];
+    let current = 0;
+
+    function update() {
+      imgs.forEach((img, i) => img.classList.toggle('active', i === current));
+      if (counter) counter.textContent = `${current + 1} / ${imgs.length}`;
+      if (caption) caption.textContent = captions[current] || '';
+    }
+
+    show.querySelector('.slideshow-prev')?.addEventListener('click', () => {
+      current = (current - 1 + imgs.length) % imgs.length;
+      update();
+    });
+    show.querySelector('.slideshow-next')?.addEventListener('click', () => {
+      current = (current + 1) % imgs.length;
+      update();
+    });
+
+    update();
+  });
+}
+
 // Init
 document.addEventListener('DOMContentLoaded', () => {
   runTypewriters();
@@ -100,4 +128,5 @@ document.addEventListener('DOMContentLoaded', () => {
   wireButtons();
   updateClock();
   setInterval(updateClock, 1000);
+  initSlideshows();
 });

@@ -33,7 +33,7 @@ html, body {
 
 /* ── CRT OUTER SHELL ── */
 .crt-shell {
-  width: min(1500px, 96vw);
+  width: min(1100px, 96vw);
   background: #1a1a1a;
   border-radius: 24px;
   padding: 32px;
@@ -409,6 +409,84 @@ p.highlight {
 
 .nav-back:hover {
   color: var(--green-dim);
+}
+
+/* ── IMAGES ── */
+.img-wrap {
+  position: relative;
+  z-index: 5;
+  margin: 28px 0;
+  border: 1px solid #0a2a0a;
+}
+
+.img-wrap img {
+  display: block;
+  width: 100%;
+  opacity: 0.85;
+  filter: sepia(0.4) hue-rotate(80deg) saturate(1.5) brightness(0.75);
+}
+
+.img-caption {
+  font-size: 10px;
+  color: #004d12;
+  letter-spacing: 2px;
+  padding: 6px 12px;
+  border-top: 1px solid #0a2a0a;
+}
+
+/* ── SLIDESHOW ── */
+.slideshow {
+  position: relative;
+  z-index: 5;
+  margin: 28px 0;
+  border: 1px solid #0a2a0a;
+}
+
+.slideshow-track img {
+  display: none;
+  width: 100%;
+  opacity: 0.85;
+  filter: sepia(0.4) hue-rotate(80deg) saturate(1.5) brightness(0.75);
+}
+
+.slideshow-track img.active {
+  display: block;
+}
+
+.slideshow-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-top: 1px solid #0a2a0a;
+}
+
+.slideshow-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: #004d12;
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 2px;
+  padding: 0;
+}
+
+.slideshow-btn:hover { color: var(--green-dim); }
+
+.slideshow-counter {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: #004d12;
+  letter-spacing: 2px;
+}
+
+.slideshow-caption {
+  font-size: 10px;
+  color: #004d12;
+  letter-spacing: 2px;
+  padding: 4px 12px 8px;
+  min-height: 24px;
 }
 
 /* ── SCROLLBAR ── */
